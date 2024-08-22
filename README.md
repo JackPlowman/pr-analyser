@@ -1,6 +1,7 @@
 # GitHub PR Analyser
 
 ## Table of Contents
+
 - [GitHub PR Analyser](#github-pr-analyser)
   - [Table of Contents](#table-of-contents)
   - [Description](#description)
@@ -26,6 +27,6 @@ The scripts and documentation in this project are released under the [MIT Licens
 
 ## Contributions
 
-<!-- 
+<!--
 Contributions are welcome! See our [Contributor's Guide](docs/contributors.md).
  -->
