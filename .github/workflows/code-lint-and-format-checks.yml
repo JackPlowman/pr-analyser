@@ -16,7 +16,7 @@ jobs:
     name: Check Code Quality
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -33,7 +33,7 @@ jobs:
     name: Check Justfile Format
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -46,21 +46,21 @@ jobs:
     name: Check Markdown links
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Check Markdown links
-        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        uses: UmbrellaDocs/action-linkspector@v1.1.3
         with:
-          config-file: .github/other-configs/markdown-check-links.json
-          base-branch: main
-          check-modified-files-only: "no"
+          reporter: github-pr-review
+          fail_on_error: true
 
   check-go-format:
     name: Check Go Format
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
