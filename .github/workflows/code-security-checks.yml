@@ -1,0 +1,27 @@
+name: "Code Security Checks"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  merge_group:
+
+permissions:
+  contents: read
+  packages: read
+  statuses: write
+
+jobs:
+  go-vul-check:
+    name: Run Go Vulnerability Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run Go Vulnerability Check
+        uses: golang/govulncheck-action@v1
+        with:
+          go-version-file: ./github-pr-analyser/go.mod
