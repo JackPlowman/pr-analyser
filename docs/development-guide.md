@@ -12,7 +12,7 @@
 
 ### Prerequisites
 
-- Go - Version can be found in the [go.mod](go.mod) file
+- Go - Version can be found in the [go.mod](../github-pr-analyser/go.mod) file
 - Just
 
 ### First time setup
