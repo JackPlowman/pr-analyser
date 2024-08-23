@@ -26,3 +26,5 @@ jobs:
           # cache-dependency-path: "./github-pr-analyser/go.sum"
       - name: Set up Just
         uses: extractions/setup-just@v2
+      - name: Run Tests
+        run: just test
