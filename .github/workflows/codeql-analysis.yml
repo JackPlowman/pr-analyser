@@ -2,9 +2,9 @@ name: Code QL Analysis
 
 on:
   push:
-      branches: [main]
+    branches: [main]
   pull_request:
-      branches: [main]
+    branches: [main]
   schedule:
     - cron: 30 1 * * 0
 
@@ -16,7 +16,7 @@ jobs:
     name: CodeQL Analysis
     runs-on: ubuntu-latest
     permissions:
-        security-events: write
+      security-events: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
