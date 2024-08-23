@@ -1,6 +1,5 @@
 version: 2
 updates:
-  # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -8,5 +7,15 @@ updates:
     target-branch: "main"
     groups:
       github-action-dependencies:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "gomod"
+    directory: "github-pr-analyser"
+    schedule:
+      interval: "daily"
+    target-branch: "main"
+    groups:
+      go-dependencies:
         patterns:
           - "*"
