@@ -1,0 +1,30 @@
+name: "Code Test"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  code-test:
+    name: Code Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: "./github-pr-analyser/go.mod"
+          # cache-dependency-path: "./github-pr-analyser/go.sum"
+      - name: Set up Just
+        uses: extractions/setup-just@v2
+      - name: Run Tests
+        run: just test
