@@ -40,7 +40,7 @@ jobs:
       - name: Set up Just
         uses: extractions/setup-just@v2
       - name: Check Justfile Format
-        run: just --fmt --check --unstable
+        run: just format-check
 
   check-markdown-links:
     name: Check Markdown links
@@ -55,3 +55,20 @@ jobs:
           config-file: .github/other-configs/markdown-check-links.json
           base-branch: main
           check-modified-files-only: "no"
+
+  check-go-format:
+    name: Check Go Format
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version-file: go.mod
+      - name: Set up Just
+        uses: extractions/setup-just@v2
+      - name: Check Go Format
+        run: just go-format
