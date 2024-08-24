@@ -1,10 +1,8 @@
 package main
 
 import (
-	log "github.com/sirupsen/logrus"
-)
-import (
 	hello "github.com/JackPlowman/github-pr-analyser/src/hello"
+	log "github.com/sirupsen/logrus"
 )
 
 func main() {

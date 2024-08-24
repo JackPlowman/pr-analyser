@@ -14,6 +14,9 @@
 
 - Go - Version can be found in the [go.mod](../github-pr-analyser/go.mod) file
   - Install Go from [here](https://go.dev/doc/install)
+- Go Tools:
+  - `goimports` - Format go imports
+    - To install run `go install golang.org/x/tools/cmd/goimports@latest`
 - Just
   - Install Just from [here](https://github.com/casey/just#installation)
 
