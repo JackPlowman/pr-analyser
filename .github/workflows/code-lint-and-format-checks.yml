@@ -67,7 +67,8 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
-          go-version-file: ./github-pr-analyser/go.mod
+          go-version-file: "./go.mod"
+          cache-dependency-path: "./go.sum"
       - name: Set up Just
         uses: extractions/setup-just@v2
       - name: Check Go Format
