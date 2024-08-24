@@ -10,6 +10,9 @@ permissions:
   contents: read
   packages: read
 
+env:
+  JUST_COLOR: "always"
+
 jobs:
   code-test:
     name: Code Test
@@ -26,6 +29,8 @@ jobs:
           # cache-dependency-path: "./github-pr-analyser/go.sum"
       - name: Set up Just
         uses: extractions/setup-just@v2
+      - name: Just help
+        run: just --help
       - name: Run Tests
         run: just test
 

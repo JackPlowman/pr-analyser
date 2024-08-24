@@ -1,5 +1,4 @@
 # Just variables
-
 export package_directory := "github-pr-analyser"
 
 # ------------------------------------------------------------------------------
