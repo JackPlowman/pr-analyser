@@ -24,7 +24,8 @@ go.work.sum
 # env file
 .env
 
-#
-!pkg/.gitkeep
-pkg
+# Ignore go pkg folder
+pkg/*
 
+# Ignore compiled Go binary
+bin/github-pr-analyser

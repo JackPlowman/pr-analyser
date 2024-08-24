@@ -1,4 +1,4 @@
-module github.com/JackPlowman/github-pr-analyser
+module github-pr-analyser
 
 go 1.22.6
 

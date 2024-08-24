@@ -1,7 +1,8 @@
 package main
 
 import (
-	hello "github.com/JackPlowman/github-pr-analyser/internal/hello"
+	hello "github-pr-analyser/internal/hello"
+
 	log "github.com/sirupsen/logrus"
 )
 
