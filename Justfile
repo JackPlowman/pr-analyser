@@ -1,6 +1,6 @@
 # Just variables
 
-export package_directory := "github-pr-analyser"
+export package_directory := "src"
 
 # ------------------------------------------------------------------------------
 # General
@@ -17,7 +17,10 @@ test:
 # ------------------------------------------------------------------------------
 
 go-format:
-    cd {{ package_directory }} && go fmt .
+    cd {{ package_directory }} && go fmt ./...
+
+go-staticcheck:
+    cd {{ package_directory }} && go staticcheck ./...
 
 # ------------------------------------------------------------------------------
 # Prettier
