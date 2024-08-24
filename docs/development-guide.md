@@ -12,7 +12,7 @@
 
 ### Prerequisites
 
-- Go - Version can be found in the [go.mod](../github-pr-analyser/go.mod) file
+- Go - Version can be found in the [go.mod](../go.mod) file
   - Install Go from [here](https://go.dev/doc/install)
 - Go Tools:
   - `goimports` - Format go imports
