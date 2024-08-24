@@ -28,3 +28,4 @@ go.work.sum
 !pkg/.gitkeep
 pkg
 
+bin/github-pr-analyser
