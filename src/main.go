@@ -3,7 +3,9 @@ package main
 import (
 	log "github.com/sirupsen/logrus"
 )
-import (hello "github.com/JackPlowman/github-pr-analyser/src/hello")
+import (
+	hello "github.com/JackPlowman/github-pr-analyser/src/hello"
+)
 
 func main() {
 	initLogging()
