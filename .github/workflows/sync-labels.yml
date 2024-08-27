@@ -23,4 +23,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
-          manifest: .github/other-configurations/labels.yml
+          manifest: .github/other-configs/labels.yml
