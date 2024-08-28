@@ -2,20 +2,16 @@ version: 2
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
+    commit-message:
+      prefix: "deps(github-actions)"
     schedule:
       interval: "daily"
     target-branch: "main"
-    groups:
-      github-action-dependencies:
-        patterns:
-          - "*"
 
   - package-ecosystem: "gomod"
-    directory: "github-pr-analyser"
+    directory: "/"
     schedule:
       interval: "daily"
     target-branch: "main"
-    groups:
-      go-dependencies:
-        patterns:
-          - "*"
+    commit-message:
+      prefix: "deps(go)"
