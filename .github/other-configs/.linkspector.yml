@@ -1,9 +1,6 @@
-files:
-  - README.md
-  - LICENSE
-  - docs/*.md
-  - docs/**/*.md
+dirs:
+  - ./
 excludedFiles:
-  - CHANGELOG.md
+  - ./CHANGELOG.md
 aliveStatusCodes:
   - 200
