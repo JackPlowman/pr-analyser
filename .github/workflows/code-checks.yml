@@ -1,15 +1,16 @@
-name: "Code Quality"
+name: "Code Checks"
 
 on:
   push:
     branches: [main]
   pull_request:
-    types: [opened, synchronize, reopened, ready_for_review]
+    types: [opened, synchronize]
 
 permissions:
   contents: read
   packages: read
   statuses: write
+  security-events: write
 
 jobs:
   check-code-quality:
@@ -17,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
       - name: Lint Code Base
@@ -34,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
       - name: Set up Just
@@ -47,11 +48,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
       - name: Check Markdown links
-        uses: UmbrellaDocs/action-linkspector@v1.2.1
+        uses: UmbrellaDocs/action-linkspector@v1.2.4
         with:
           github_token: ${{ secrets.GH_TOKEN }}
           config_file: .github/other-configs/.linkspector.yml
@@ -59,16 +60,30 @@ jobs:
           fail_on_error: true
           filter_mode: nofilter
 
+  run-codeql-analysis:
+    name: CodeQL Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3.27.1
+        with:
+          languages: go
+          queries: security-and-quality
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3.27.1
+
   check-go-format:
     name: Check Go Format
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
       - name: Set up Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v5.1.0
         with:
           go-version-file: "./go.mod"
           cache-dependency-path: "./go.sum"
@@ -76,3 +91,39 @@ jobs:
         uses: extractions/setup-just@v2
       - name: Check Go Format
         run: just go-format
+
+  go-vul-check:
+    name: Run Go Vulnerability Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Go Vulnerability Check
+        uses: golang/govulncheck-action@v1.0.4
+        with:
+          go-version-file: ./go.mod
+          work-dir: .
+
+  unit-tests:
+    name: Run Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+      - name: Set up Go
+        uses: actions/setup-go@v5.1.0
+        with:
+          go-version-file: "./go.mod"
+          cache-dependency-path: "./go.sum"
+      - name: Set up Just
+        uses: extractions/setup-just@v2
+      - name: Run Tests
+        run: just test
+
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@v3.1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: .
