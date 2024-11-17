@@ -1,4 +1,4 @@
-name: "Pull Request Checks"
+name: "Pull Request Tasks"
 
 on:
   pull_request:
@@ -27,7 +27,6 @@ jobs:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           configuration-path: .github/other-configs/labeller.yml
           sync-labels: true
-
       - name: Add Size Labels
         uses: pascalgn/size-label-action@v0.5.5
         env:
