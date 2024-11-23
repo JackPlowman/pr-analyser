@@ -14,6 +14,9 @@ updates:
       github-actions:
         patterns:
           - "*"
+        update-types:
+          - "patch"
+          - "minor"
 
   - package-ecosystem: "gomod"
     directory: "/"
