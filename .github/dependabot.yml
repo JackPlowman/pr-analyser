@@ -32,3 +32,6 @@ updates:
       go:
         patterns:
           - "*"
+        update-types:
+          - "patch"
+          - "minor"
