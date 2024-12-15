@@ -23,6 +23,7 @@ func RunHello() {
 
 func GitHubActionSummary(){
   action := os.Getenv("GITHUB_ACTION")
+	log.Info("GitHub Action: ", action)
 	if action == "true" {
 		log.Info("Running in GitHub Action, Generating Summary")
 		gitHubActionSummaryFile := os.Getenv("GITHUB_STEP_SUMMARY")
