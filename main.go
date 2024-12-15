@@ -23,16 +23,16 @@ func RunHello() {
 }
 
 // Generate GitHub Action Summary
-func GitHubActionSummary(){
-  action := os.Getenv("RUNNING_IN_GITHUB_ACTION")
+func GitHubActionSummary() {
+	action := os.Getenv("RUNNING_IN_GITHUB_ACTION")
 	if action == "true" {
 		log.Info("Running in GitHub Action, Generating Summary")
 		gitHubActionSummaryFile := os.Getenv("GITHUB_STEP_SUMMARY")
 		content := []byte("# Hello World")
-		err := os.WriteFile(gitHubActionSummaryFile, content, 0644)
+		err := os.WriteFile(gitHubActionSummaryFile, content, 0600)
 		if err != nil {
 			panic(err)
-	}
+		}
 		log.Info("Summary Generated")
 	}
 }
