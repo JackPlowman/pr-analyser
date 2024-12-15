@@ -6,4 +6,4 @@ runs:
   using: "docker"
   image: "../../../Dockerfile"
   env:
-    GITHUB_ACTION: "true"
+    RUNNING_IN_GITHUB_ACTION: "true"
