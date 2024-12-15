@@ -2,6 +2,7 @@ package main
 
 import (
 	log "github.com/sirupsen/logrus"
+	"os"
 )
 
 func main() {
@@ -18,4 +19,17 @@ func initLogging() {
 
 func RunHello() {
 	log.Info("Hello World")
+}
+
+func GitHubActionSummary(){
+  action := os.Getenv("GITHUB_ACTION")
+	if action == "true" {
+		log.Info("Running in GitHub Action, Generating Summary")
+		gitHubActionSummaryFile := os.Getenv("GITHUB_STEP_SUMMARY")
+		err := os.WriteFile(gitHubActionSummaryFile, "# Hello World", 0644)
+		if err != nil {
+			panic(err)
+	}
+		log.Info("Summary Generated")
+	}
 }
