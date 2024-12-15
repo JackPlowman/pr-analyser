@@ -26,7 +26,8 @@ func GitHubActionSummary(){
 	if action == "true" {
 		log.Info("Running in GitHub Action, Generating Summary")
 		gitHubActionSummaryFile := os.Getenv("GITHUB_STEP_SUMMARY")
-		err := os.WriteFile(gitHubActionSummaryFile, "# Hello World", 0644)
+		content := []byte("# Hello World")
+		err := os.WriteFile(gitHubActionSummaryFile, content, 0644)
 		if err != nil {
 			panic(err)
 	}
