@@ -1,0 +1,9 @@
+name: "GitHub Pull Request Analyser"
+description: "Analyse the GitHub Pull Request"
+author: "Jack Plowman"
+
+runs:
+  using: "docker"
+  image: "../../../Dockerfile"
+  env:
+    GITHUB_ACTION: "true"
