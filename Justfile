@@ -22,6 +22,19 @@ go-vet:
     go vet ./...
 
 # ------------------------------------------------------------------------------
+# Docker Commands
+# ------------------------------------------------------------------------------
+
+# Build the Docker image
+docker-build:
+    docker build -t jackplowman/github-pr-analyser:latest .
+
+# Run the analyser in a Docker container, used for testing the github action docker image
+docker-run:
+    docker run \
+      --rm jackplowman/github-pr-analyser:latest
+
+# ------------------------------------------------------------------------------
 # Prettier
 # ------------------------------------------------------------------------------
 
