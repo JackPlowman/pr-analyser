@@ -6,7 +6,7 @@ build:
     echo TODO
 
 test:
-    echo TODO
+    go test -coverprofile=coverage.out ./...
 
 # ------------------------------------------------------------------------------
 # Go
