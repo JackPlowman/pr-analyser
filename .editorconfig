@@ -16,4 +16,4 @@ indent_size = unset
 
 [*.go,*.mod,*.sum]
 indent_size = 2
-indent_style = tab
+indent_style = space
