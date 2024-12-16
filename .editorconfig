@@ -17,3 +17,6 @@ indent_size = unset
 [*.go]
 indent_size = 2
 indent_style = tab
+
+[go.mod]
+indent_style = unset
