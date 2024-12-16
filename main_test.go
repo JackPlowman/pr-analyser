@@ -1,4 +1,3 @@
-
 package main
 
 import (
@@ -7,7 +6,6 @@ import (
 
 	"github.com/stretchr/testify/assert"
 )
-
 
 func TestGitHubActionSummary(t *testing.T) {
 	// Arrange
