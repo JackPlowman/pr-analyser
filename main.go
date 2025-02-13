@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"io/ioutil"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -9,6 +10,7 @@ import (
 func main() {
 	initLogging()
 	RunHello()
+	CheckGitHubWorkspace()
 	GitHubActionSummary()
 }
 
@@ -35,5 +37,19 @@ func GitHubActionSummary() {
 			panic(err)
 		}
 		log.Info("Summary Generated")
+	}
+}
+
+// Check if github/workspace folder has files
+func CheckGitHubWorkspace() {
+	files, err := ioutil.ReadDir("/github/workspace")
+	if err != nil {
+		log.Error("Error reading github/workspace folder: ", err)
+		return
+	}
+	if len(files) == 0 {
+		log.Error("Repository not checked out")
+	} else {
+		log.Debug("Files found in github/workspace folder")
 	}
 }
