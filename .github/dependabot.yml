@@ -37,3 +37,21 @@ updates:
         update-types:
           - "patch"
           - "minor"
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    commit-message:
+      prefix: "deps(docker)"
+    schedule:
+      interval: "weekly"
+      day: "saturday"
+      time: "01:00"
+      timezone: "Europe/London"
+    target-branch: "main"
+    groups:
+      docker:
+        patterns:
+          - "*"
+        update-types:
+          - "patch"
+          - "minor"
