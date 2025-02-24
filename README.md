@@ -7,6 +7,7 @@
   - [Description](#description)
   - [Basic usage](#basic-usage)
   - [License](#license)
+  - [Development Guide](#development-guide)
   - [Contributions](#contributions)
 
 ## Description
@@ -27,7 +28,7 @@ The scripts and documentation in this project are released under the [MIT Licens
 
 ## Development Guide
 
-See [Development Guide](docs/development-guide.md).
+See [Development Guide](docs/DEVELOPMENT_GUIDE.md).
 
 ## Contributions
 
